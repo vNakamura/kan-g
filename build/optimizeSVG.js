@@ -31,7 +31,8 @@ async function proccessFile(filename) {
         name: 'preset-default',
         params: {
           overrides: {
-            convertColors: false
+            convertColors: false,
+            removeViewBox: false,
           }
         }
       },
