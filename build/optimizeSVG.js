@@ -27,7 +27,14 @@ async function proccessFile(filename) {
 
   const optimizedSVG = svgo.optimize(originalSVG, {
     plugins: [
-      'preset-default',
+      {
+        name: 'preset-default',
+        params: {
+          overrides: {
+            convertColors: false
+          }
+        }
+      },
       {
         name: "addClassesToSVGElement",
         params: {
@@ -35,6 +42,16 @@ async function proccessFile(filename) {
         }
       },
       "convertStyleToAttrs",
+      {
+        name: "convertColors",
+        params: {
+          currentColor: "#000",
+          names2hex: true,
+          rgb2hex: true,
+          shorthex: true,
+          shortname: true,
+        }
+      },
     ]
   })
 
