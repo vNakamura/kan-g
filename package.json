@@ -7,9 +7,15 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "buildSVG": "bun run build/optimizeSVG.js"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^7.7.1",
     "astro": "^3.5.5"
+  },
+  "devDependencies": {
+    "cli-progress": "^3.12.0",
+    "svgo": "^3.0.4"
   }
 }
