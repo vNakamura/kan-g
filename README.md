@@ -1,4 +1,4 @@
-![漢](https://kan-g.vnaka.dev/k/06f22.svg)![G](https://kan-g.vnaka.dev/k/00047.svg)
+![漢](https://kan-g.pages.dev/k/06f22.svg)![G](https://kan-g.pages.dev/k/00047.svg)
 
 # Kan-G
 
