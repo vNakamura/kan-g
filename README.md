@@ -1,6 +1,8 @@
+![漢](https://kan-g.vnaka.dev/k/06f22.svg)![G](https://kan-g.vnaka.dev/k/00047.svg)
+
 # Kan-G
 
-It's [KanjiVG](https://kanjivg.tagaini.net), but smaller.
+[KanjiVG](https://kanjivg.tagaini.net), streamlined.
 
 
 The objective for Kan-G is simple:
