@@ -4,17 +4,35 @@ import svgo from 'svgo'
 
 const kanjivgPath = './kanjivg/kanji'
 const outputPath = './public/k'
+const indexOutput = './public/kg-index.json'
 
-const filenames = Object.values(kanjivgIndex).flat()
+
+const reducedIndex = Object.fromEntries(
+  Object.entries(kanjivgIndex).map(
+    ([char, files]) => {
+      const file = files.findLast((name) => !name.includes("-"))
+        || files.at(-1)
+      return [char, file]
+    }
+  )
+)
+
+const filenames = Object.values(reducedIndex)
 const bar = new cliProgress.SingleBar({
   etaBuffer: 300
 })
+
+console.log("Optimizing SVG files:")
 bar.start(filenames.length)
 for(const filename of filenames) {
   await proccessFile(filename)
   bar.increment()
 }
 bar.stop()
+
+console.log(`Saving index in ${indexOutput}`)
+Bun.write(indexOutput, JSON.stringify(reducedIndex))
+console.log("Process finished.")
 
 async function proccessFile(filename) {
   const file = Bun.file(`${kanjivgPath}/${filename}`)
