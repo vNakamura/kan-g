@@ -51,6 +51,7 @@ async function proccessFile(filename) {
           overrides: {
             convertColors: false,
             removeViewBox: false,
+            mergePaths: false
           }
         }
       },
