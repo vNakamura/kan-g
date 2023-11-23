@@ -2,6 +2,17 @@
 
 [KanjiVG](https://kanjivg.tagaini.net), streamlined.
 
+## Table of Contents
+
+- [Background](#background)
+- [Differences](#differences)
+- [Usage](#usage)
+  - [Kan-G as external source](#kan-g-as-external-source)
+- [Build your own version](#build-your-own-version)
+- [License](#license)
+
+---
+
 ## Background
 
 This project started when I was creating a [userscript for jpdb.io](https://gist.github.com/vNakamura/90cd3dec43118d14d90df2323bdd2650) and needed to replace jpdb SVGs with the KanjiVG ones.
@@ -42,6 +53,7 @@ const code = kanji.charCodeAt(0).toString(16).padStart(5, "0") // 04f55
 ```
 
 &nbsp;
+
 For convenience, the index pointing to each file is available in `public/kg-index.json` or `https://kan-g.vnaka.dev/kg-index.json`. The json file differs from the KanjiVG one as it points directly to the String with the file name instead of an Array:
 
 ```js
@@ -60,6 +72,7 @@ For convenience, the index pointing to each file is available in `public/kg-inde
 ```
 
 &nbsp;
+
 Even easier, you can point to `https://kan-g.vnaka.dev/c/{kanji}` and it will redirect to the proper file.
 E.g.: `https://kan-g.vnaka.dev/c/方` will redirect to `https://kan-g.vnaka.dev/k/065b9.svg`
 
@@ -71,14 +84,14 @@ This will work for all characters available in KanjiVG with the exception of spe
 
 If you cannot host you own files, the easiest way to use the kanji files in your site is with the `img` tag. But it has it's drawbacks.
 
-`<img src="https://kan-g.vnaka.dev/c/字" width="250">` will result in this:
+`<img src="https://kan-g.vnaka.dev/c/字" width="250">` will result in this: <br>
 <img src="https://kan-g.vnaka.dev/c/字" width="250">
 
-The image looks correct and crisp in any size, but you cannot customize it with CSS. The `currentcolor` also won't take effect and the browser will just use black - If you're seeing this in dark mode, you already noticed.  
+The image looks correct and crisp in any size, but you cannot customize it with CSS. The `currentcolor` also won't take effect and the browser will just use black - If you're seeing this in dark mode, you already noticed.<br>
 `<img>` will only follow `prefers-color-scheme` if the files are hosted in the same domain. ([source](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme#embedded_elements))
 
-One alternative is to use a script like [SVG Loader](https://github.com/shubhamjain/svg-loader)
-Here's a demo comparing loading kanjis with `img` and `svg-loader`: <https://codepen.io/vNakamura/pen/GRzdxrb>
+One alternative is to use a script like [SVG Loader](https://github.com/shubhamjain/svg-loader)<br>
+Here's a demo comparing how kanjis loaded with `img` and `svg-loader` are affected by CSS: <https://codepen.io/vNakamura/pen/GRzdxrb>
 
 ## Build your own version
 
