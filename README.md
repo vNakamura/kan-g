@@ -1,4 +1,4 @@
-# ![Logo](http://kan-g.vnaka.dev/kan-gLogo.svg)<br/>Kan-G
+# ![Logo](http://kan-g.vnaka.dev/kan-gLogo.svg)<br/><ruby>Kan<rt>かん</rt></ruby>-<ruby>G<rt>ジー</rt></ruby>
 
 [KanjiVG](https://kanjivg.tagaini.net), streamlined.
 
@@ -59,15 +59,15 @@ For convenience, the index pointing to each file is available in `public/kg-inde
 ```js
 // KanjiVG:
 {
-	"字":[
-		"05b57-Kaisho.svg",
-		"05b57.svg"
-	],
+  "字":[
+    "05b57-Kaisho.svg",
+    "05b57.svg"
+  ],
 }
 
 // Kan-G:
 {
-    "字": "05b57.svg",
+  "字": "05b57.svg",
 }
 ```
 
@@ -76,7 +76,7 @@ For convenience, the index pointing to each file is available in `public/kg-inde
 Even easier, you can point to `https://kan-g.vnaka.dev/c/{kanji}` and it will redirect to the proper file.
 E.g.: `https://kan-g.vnaka.dev/c/方` will redirect to `https://kan-g.vnaka.dev/k/065b9.svg`
 
-This will work for all characters available in KanjiVG with the exception of special characters like `?` and `:` that are used for composing urls. If you plan to use those characters or want to be extra cautious, you can use [encodeURIComponent()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent) to make it URL-safe.
+This will work for all characters available in KanjiVG with the exception of a few ASCII characters like `?` and `:` that are used for composing urls. If you plan to use those characters or want to be extra cautious, you can use [encodeURIComponent()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent) to make it URL-safe.
 
 > ⚠️ Please be aware that while the distribution of static files is unlimited in the Cloudflare free plan, the use of Function Workers is [limited](https://developers.cloudflare.com/workers/platform/limits/#worker-limits). If your project operates on high volume, consider implementing your own solution to avoid breaking the tool to everyone else.
 
@@ -87,15 +87,27 @@ If you cannot host you own files, the easiest way to use the kanji files in your
 `<img src="https://kan-g.vnaka.dev/c/字" width="250">` will result in this: <br>
 <img src="https://kan-g.vnaka.dev/c/字" width="250">
 
-The image looks correct and crisp in any size, but you cannot customize it with CSS. The `currentcolor` also won't take effect and the browser will just use black - If you're seeing this in dark mode, you already noticed.<br>
-`<img>` will only follow `prefers-color-scheme` if the files are hosted in the same domain. ([source](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme#embedded_elements))
+The image looks correct and crisp in any size, but you cannot customize it with CSS. The `currentcolor` also won't take effect and the browser will just use black - If you're seeing this in dark mode, you already noticed.
 
 One alternative is to use a script like [SVG Loader](https://github.com/shubhamjain/svg-loader)<br>
 Here's a demo comparing how kanjis loaded with `img` and `svg-loader` are affected by CSS: <https://codepen.io/vNakamura/pen/GRzdxrb>
 
 ## Build your own version
 
-`// TODO`
+1. First, make sure to include the submodules when cloning the project:
+
+   1. `git clone --recurse-submodules git@github.com:vNakamura/kan-g.git`
+   2. This way it will also download the original KanjiVG files.
+
+2. Install [Bun](https://bun.sh/)
+3. Install the project dependencies:
+
+   1. `bun install`
+
+4. Modify [./build/optimizeSVG.js](./build/optimizeSVG.js) for your needs. This script uses [SVGO](https://svgo.dev/) to modify the SVG files.
+5. Run the script
+
+   1. `bun run buildSVG`
 
 ## License
 
